@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct StoreSandboxSecretScreen: View {
-    private static let storeSandboxSecretKey = "store_sandbox"
+    static let storeSandboxSecretKey = "store_sandbox"
 
     @SwiftUI.Environment(\.presentationMode) var presentationMode
     @State private var secret: String
@@ -22,14 +22,8 @@ struct StoreSandboxSecretScreen: View {
             // This seems to be necessary due to an iOS bug where
             // accessing presentationMode.wrappedValue crashes.
             DispatchQueue.main.async {
-                if self.presentationMode.wrappedValue.isPresented == false,
-                  let cookie = HTTPCookie(properties: [
-                    .name: StoreSandboxSecretScreen.storeSandboxSecretKey,
-                    .value: secret,
-                    .domain: ".wordpress.com",
-                    .path: "/"
-                  ]) {
-                    cookieJar.setCookies([cookie]) {}
+                if self.presentationMode.wrappedValue.isPresented == false {
+                    StoreSandboxSecretScreen.setStoreSandboxSecret(secret, cookieJar: cookieJar)
                 }
             }
         }
@@ -49,6 +43,17 @@ struct StoreSandboxSecretScreen: View {
         } else {
             _secret = State(initialValue: "")
         }
+    }
+
+    static func setStoreSandboxSecret(_ secret: String, cookieJar: CookieJar = HTTPCookieStorage.shared) {
+        if let cookie = HTTPCookie(properties: [
+          .name: StoreSandboxSecretScreen.storeSandboxSecretKey,
+          .value: secret,
+          .domain: ".wordpress.com",
+          .path: "/"
+        ]) {
+          cookieJar.setCookies([cookie]) {}
+      }
     }
 }
 

@@ -96,6 +96,8 @@ class WordPressAppDelegate: UIResponder, UIApplicationDelegate {
         // Configure WPCom API overrides
         configureWordPressComApi()
 
+        configureStoreSandbox()
+
         configureWordPressAuthenticator()
 
         configureReachability()
@@ -487,6 +489,13 @@ extension WordPressAppDelegate {
     @objc func configureWordPressComApi() {
         if let baseUrl = UserDefaults.standard.string(forKey: "wpcom-api-base-url") {
             Environment.replaceEnvironment(wordPressComApiBase: baseUrl)
+        }
+    }
+
+    @objc func configureStoreSandbox() {
+        if FeatureFlag.debugMenu.enabled,
+           let secret = UserDefaults.standard.string(forKey: "storeSandboxSecret") {
+            StoreSandboxSecretScreen.setStoreSandboxSecret(secret)
         }
     }
 }
