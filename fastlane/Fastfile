@@ -844,7 +844,7 @@ platform :ios do
       UI.user_error!("Unable to find .xctestrun file at #{build_products_path}")
     end
 
-    multi_scan(
+    scan(
       workspace: WORKSPACE_PATH,
       scheme: 'WordPress',
       device: options[:device],
