@@ -219,6 +219,8 @@
 		1730D4A31E97E3E400326B7C /* MediaItemTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1730D4A21E97E3E400326B7C /* MediaItemTableViewCells.swift */; };
 		173BCE791CEB780800AE8817 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173BCE781CEB780800AE8817 /* Domain.swift */; };
 		173D82E7238EE2A7008432DA /* FeatureFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D82E6238EE2A7008432DA /* FeatureFlagTests.swift */; };
+		173DF28B2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173DF28A2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift */; };
+		173DF28C2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173DF28A2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift */; };
 		1746D7771D2165AE00B11D77 /* ForcePopoverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746D7761D2165AE00B11D77 /* ForcePopoverPresenter.swift */; };
 		1749965F2271BF08007021BD /* WordPressAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1749965E2271BF08007021BD /* WordPressAppDelegate.swift */; };
 		174C116F2624603400346EC6 /* MBarRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174C116E2624603400346EC6 /* MBarRouteTests.swift */; };
@@ -4809,6 +4811,7 @@
 		1730D4A21E97E3E400326B7C /* MediaItemTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemTableViewCells.swift; sourceTree = "<group>"; };
 		173BCE781CEB780800AE8817 /* Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		173D82E6238EE2A7008432DA /* FeatureFlagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagTests.swift; sourceTree = "<group>"; };
+		173DF28A2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		1746D7761D2165AE00B11D77 /* ForcePopoverPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForcePopoverPresenter.swift; sourceTree = "<group>"; };
 		1749965E2271BF08007021BD /* WordPressAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPressAppDelegate.swift; sourceTree = "<group>"; };
 		174C116E2624603400346EC6 /* MBarRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBarRouteTests.swift; sourceTree = "<group>"; };
@@ -9062,6 +9065,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A8CACA1C22FF7C0038689E /* MeViewController.swift */,
+				173DF28A2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift */,
 				3F29EB7124042276005313DE /* MeViewController+UIViewControllerRestoration.swift */,
 				3F29EB6C24042038005313DE /* Header */,
 				3F43602D23F31C06001DEE70 /* Presenter */,
@@ -17609,6 +17613,7 @@
 				E14BCABB1E0BC817002E0603 /* Delay.swift in Sources */,
 				D83CA3A520842CAF0060E310 /* Pageable.swift in Sources */,
 				17E362EC22C40BE8000E0C79 /* AppIconViewController.swift in Sources */,
+				173DF28B2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift in Sources */,
 				598DD1711B97985700146967 /* ThemeBrowserCell.swift in Sources */,
 				B5A05AD91CA48601002EC787 /* ImageCropViewController.swift in Sources */,
 				F93735F122D534FE00A3C312 /* LoggingURLRedactor.swift in Sources */,
@@ -19660,6 +19665,7 @@
 				FABB22812602FC2C00C8785C /* GutenbergRequestAuthenticator.swift in Sources */,
 				3FB1929626C79EC6000F5AA3 /* Date+TimeStrings.swift in Sources */,
 				FABB22822602FC2C00C8785C /* WPTableViewActivityCell.m in Sources */,
+				173DF28C2743E8E9007C64B5 /* AboutViewControllerConfiguration.swift in Sources */,
 				FABB22842602FC2C00C8785C /* PeopleViewController.swift in Sources */,
 				FABB22852602FC2C00C8785C /* ConfettiView.swift in Sources */,
 				FABB22862602FC2C00C8785C /* RegisterDomainSuggestionsViewController.swift in Sources */,

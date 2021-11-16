@@ -1,6 +1,10 @@
 import UIKit
 import WordPressShared
 
+struct AboutLinks {
+    let workWithUs: String
+}
+
 /// Defines a single row in the unified about screen.
 ///
 struct AboutItem {
@@ -102,6 +106,7 @@ class UnifiedAboutViewController: UIViewController {
         .workWithUs: AboutItem(title: "Work With Us", subtitle: "Join From Anywhere", cellStyle: .subtitle)
     ]
 
+    var links: AboutLinks?
     var sharePresenter: ShareAppContentPresenter?
 
     // MARK: - Views
@@ -162,7 +167,8 @@ class UnifiedAboutViewController: UIViewController {
 
     // MARK: - View lifecycle
 
-    init(sharePresenter: ShareAppContentPresenter? = nil) {
+    init(links: AboutLinks? = nil, sharePresenter: ShareAppContentPresenter? = nil) {
+        self.links = links
         self.sharePresenter = sharePresenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -197,6 +203,24 @@ class UnifiedAboutViewController: UIViewController {
 
     private func presentShareSheet(from view: UIView?) {
         sharePresenter?.present(for: .wordpress, in: self, source: .about, sourceView: view)
+    }
+
+    private func presentWorkWithUs() {
+        guard let links = links else {
+            return
+        }
+
+        presentWebView(for: links.workWithUs)
+    }
+
+    private func presentWebView(for urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        let webViewController = WebViewControllerFactory.controller(url: url)
+        let navigationController = UINavigationController(rootViewController: webViewController)
+        present(navigationController, animated: true)
     }
 
     // MARK: - Constants
@@ -267,6 +291,8 @@ extension UnifiedAboutViewController: UITableViewDelegate {
         switch identifier {
         case .share:
             presentShareSheet(from: tableView.cellForRow(at: indexPath))
+        case .workWithUs:
+            presentWorkWithUs()
         default:
             break
         }

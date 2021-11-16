@@ -162,7 +162,7 @@ class MeViewController: UITableViewController {
                     rows.append(NavigationItemRow(title: RowTitles.about,
                                                   icon: UIImage.gridicon(.mySites),
                                                   accessoryType: .disclosureIndicator,
-                                                  action: pushAbout(),
+                                                  action: presentAbout(),
                                                   accessibilityIdentifier: "About"))
                 } else if isRecommendAppRowEnabled {
                     rows.append(NavigationItemRow(title: ShareAppContentPresenter.RowConstants.buttonTitle,
@@ -251,9 +251,9 @@ class MeViewController: UITableViewController {
         }
     }
 
-    private func pushAbout() -> ImmuTableAction {
+    private func presentAbout() -> ImmuTableAction {
         return { [unowned self] _ in
-            let controller = UnifiedAboutViewController(sharePresenter: self.sharePresenter)
+            let controller = UnifiedAboutViewController(links: AboutConfiguration.links, sharePresenter: self.sharePresenter)
             controller.modalPresentationStyle = .formSheet
             self.present(controller, animated: true) {
                 self.tableView.deselectSelectedRowWithAnimation(true)
