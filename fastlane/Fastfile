@@ -90,6 +90,15 @@ platform :ios do
   ########################################################################
   import './ScreenshotFastfile'
 
+  lane :test_309 do
+    ios_generate_strings_file_from_code(
+      paths: ['WordPress', 'Pods/'],
+      quiet: false,
+      switui: true,
+      output_dir: "test_309_#{Time.now.to_i}"
+    )
+  end
+
   ########################################################################
   # Release Lanes
   ########################################################################
