@@ -93,7 +93,7 @@ platform :ios do
   lane :test_309 do
     ios_generate_strings_file_from_code(
       quiet: false,
-      swiftui: true,
+      swiftui: false,
       paths: ['WordPress/', 'Pods/WordPress*/', 'Pods/WPMediaPicker/', 'WordPressShared/WordPressShared/', 'Pods/Gutenberg/'],
       exclude: ['*Vendor*', 'WordPress/WordPressTest/I18n.swift', 'WordPress/WordPressStatsWidgets/Views/Localization/LocalizedStringKey+extension.swift', '*/Secrets.swift'],
       output_dir: File.join(PROJECT_ROOT_FOLDER, 'WordPress', 'Resources', 'en.lproj')
