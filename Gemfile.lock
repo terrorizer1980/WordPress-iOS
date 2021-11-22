@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:wordpress-mobile/release-toolkit
-  revision: 82d329df5a35dbb078b1e46b313bd0c9c9c5c3f5
+  revision: 8c69b42863322a9dfad9f4c56f1a6417f4c1efa2
   branch: l10n/localize.py
   specs:
     fastlane-plugin-wpmreleasetoolkit (2.1.0)
@@ -232,7 +232,7 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     httpclient (2.8.3)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     json (2.5.1)
@@ -353,4 +353,4 @@ DEPENDENCIES
   xcpretty-travis-formatter
 
 BUNDLED WITH
-   2.2.27
+   2.2.29
