@@ -94,8 +94,8 @@ platform :ios do
     ios_generate_strings_file_from_code(
       paths: ['WordPress', 'Pods/'],
       quiet: false,
-      switui: true,
-      output_dir: "test_309_#{Time.now.to_i}"
+      swiftui: true,
+      output_dir: File.join(PROJECT_ROOT_FOLDER, 'WordPress', 'Resources', 'en.lproj')
     )
   end
 
