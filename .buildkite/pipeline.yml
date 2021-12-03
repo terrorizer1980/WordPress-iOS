@@ -58,19 +58,51 @@ steps:
   #################
   # UI Tests
   #################
-  - label: "🧪 UI Tests (iPhone)"
-    command: .buildkite/commands/run-ui-tests.sh WordPressUITests 'iPhone 13' 15.0
-    depends_on: "build"
-    env: *common_env
-    plugins: *common_plugins
-    artifact_paths:
-      - "build/results/"
+  - group: "🧪 UI Tests (iPhone)"
+    steps:
+      - label: "Gutenberg"
+        command: .buildkite/commands/run-ui-tests.sh EditorGutenbergTests 'iPhone 13' 15.0
+        env: *common_env
+        plugins: *common_plugins
+        artifact_paths:
+          - "build/results/"
 
+      - label: "Login"
+        command: .buildkite/commands/run-ui-tests.sh LoginTests 'iPhone 13' 15.0
+        env: *common_env
+        plugins: *common_plugins
+        artifact_paths:
+          - "build/results/"
 
-  - label: "🧪 UI Tests (iPad)"
-    command: .buildkite/commands/run-ui-tests.sh WordPressUITests "iPad Air (4th generation)" 15.0
+      - label: "Signup"
+        command: .buildkite/commands/run-ui-tests.sh SignupTests 'iPhone 13' 15.0
+        env: *common_env
+        plugins: *common_plugins
+        artifact_paths:
+          - "build/results/"
+
     depends_on: "build"
-    env: *common_env
-    plugins: *common_plugins
-    artifact_paths:
-      - "build/results/"
+
+  - group: "🧪 UI Tests (iPad)"
+    steps:
+      - label: "Gutenberg"
+        command: .buildkite/commands/run-ui-tests.sh EditorGutenbergTests 'iPad Air (4th generation)' 15.0
+        env: *common_env
+        plugins: *common_plugins
+        artifact_paths:
+          - "build/results/"
+
+      - label: "Login"
+        command: .buildkite/commands/run-ui-tests.sh LoginTests 'iPad Air (4th generation)' 15.0
+        env: *common_env
+        plugins: *common_plugins
+        artifact_paths:
+          - "build/results/"
+
+      - label: "Signup"
+        command: .buildkite/commands/run-ui-tests.sh SignupTests 'iPad Air (4th generation)' 15.0
+        env: *common_env
+        plugins: *common_plugins
+        artifact_paths:
+          - "build/results/"
+    depends_on: "build"

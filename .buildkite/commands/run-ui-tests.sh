@@ -24,7 +24,10 @@ install_gems
 echo "--- :cocoapods: Setting up Pods"
 install_cocoapods
 
+echo "--- :closed_lock_with_key: Installing Secrets"
+bundle exec fastlane run configure_apply
+
 echo "--- 🧪 Testing"
 xcrun simctl list >> /dev/null
 rake mocks &
-bundle exec fastlane test_without_building name:"$TEST_NAME" try_count:3 device:"$DEVICE" ios_version:"$IOS_VERSION"
+bundle exec fastlane perform_ui_tests testplan:"$TEST_NAME" device:"$DEVICE" ios_version:"$IOS_VERSION"

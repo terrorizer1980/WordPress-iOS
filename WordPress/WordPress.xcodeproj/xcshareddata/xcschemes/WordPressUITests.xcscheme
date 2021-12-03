@@ -55,6 +55,15 @@
             reference = "container:WordPressUITests/WordPressUITests.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:WordPressUITests/Plans/EditorGutenbergTests.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:WordPressUITests/Plans/EditorAztecTests.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:WordPressUITests/Plans/LoginTests.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference
