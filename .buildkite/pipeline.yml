@@ -16,15 +16,18 @@ steps:
   #################
   # Create Installable Builds for WP and JP
   #################
-  - label: ":hammer_and_wrench: WordPress Installable Build"
-    command: ".buildkite/commands/installable-build-wordpress.sh"
-    env: *common_env
-    plugins: *common_plugins
+  - group: ":hammer_and_wrench: Installable Builds"
+    steps:
+      - label: "WordPress"
+        command: ".buildkite/commands/installable-build-wordpress.sh"
+        env: *common_env
+        plugins: *common_plugins
 
-  - label: ":hammer_and_wrench: Jetpack Installable Build"
-    command: ".buildkite/commands/installable-build-jetpack.sh"
-    env: *common_env
-    plugins: *common_plugins
+      - label: "Jetpack"
+        command: ".buildkite/commands/installable-build-jetpack.sh"
+        env: *common_env
+        plugins: *common_plugins
+    if: "build.pull_request.id != null"
 
   #################
   # Build the app
