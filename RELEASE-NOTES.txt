@@ -1,3 +1,8 @@
+Unreleased
+-----
+* [*] Block editor: Fixed an issue where videos thumbnails could show when selecting images, and vice versa. [https://github.com/wordpress-mobile/WordPress-iOS/pull/17670]
+
+
 18.9
 -----
 * [**] Block editor: Fix issue where editor doesn't auto-scroll so you can see what is being typed. [https://github.com/wordpress-mobile/gutenberg-mobile/pull/4299]
