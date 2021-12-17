@@ -6,7 +6,7 @@ import Foundation
 /// Analytics are also tracked.
 struct PostListEditorPresenter {
 
-    static func handle(post: Post, in postListViewController: PostListViewController) {
+    static func handle(post: Post, in postListViewController: UIViewController) {
 
         // Autosaves are ignored for posts with local changes.
         if !post.hasLocalChanges(), post.hasAutosaveRevision, let saveDate = post.dateModified, let autosaveDate = post.autosaveModifiedDate {
@@ -19,7 +19,7 @@ struct PostListEditorPresenter {
         }
     }
 
-    static func handleCopy(post: Post, in postListViewController: PostListViewController) {
+    static func handleCopy(post: Post, in postListViewController: UIViewController) {
         // Autosaves are ignored for posts with local changes.
         if !post.hasLocalChanges(), post.hasAutosaveRevision {
             let conflictsResolutionViewController = copyConflictsResolutionViewController(didTapOption: { copyLocal, cancel in
@@ -38,14 +38,14 @@ struct PostListEditorPresenter {
         }
     }
 
-    private static func openEditor(with post: Post, loadAutosaveRevision: Bool, in postListViewController: PostListViewController) {
+    private static func openEditor(with post: Post, loadAutosaveRevision: Bool, in postListViewController: UIViewController) {
         let editor = EditPostViewController(post: post, loadAutosaveRevision: loadAutosaveRevision)
         editor.modalPresentationStyle = .fullScreen
         postListViewController.present(editor, animated: false)
-        WPAppAnalytics.track(.postListEditAction, withProperties: postListViewController.propertiesForAnalytics(), with: post)
+//        WPAppAnalytics.track(.postListEditAction, withProperties: postListViewController.propertiesForAnalytics(), with: post)
     }
 
-    private static func openEditorWithCopy(with post: Post, in postListViewController: PostListViewController) {
+    private static func openEditorWithCopy(with post: Post, in postListViewController: UIViewController) {
         // Copy Post
         let context = ContextManager.sharedInstance().mainContext
         let postService = PostService(managedObjectContext: context)
@@ -59,7 +59,7 @@ struct PostListEditorPresenter {
         editor.modalPresentationStyle = .fullScreen
         postListViewController.present(editor, animated: false)
         // Track Analytics event
-        WPAppAnalytics.track(.postListDuplicateAction, withProperties: postListViewController.propertiesForAnalytics(), with: post)
+//        WPAppAnalytics.track(.postListDuplicateAction, withProperties: postListViewController.propertiesForAnalytics(), with: post)
     }
 
     private static let dateFormatter: DateFormatter = {

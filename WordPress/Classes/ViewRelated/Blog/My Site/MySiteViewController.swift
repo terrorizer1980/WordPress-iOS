@@ -341,6 +341,16 @@ class MySiteViewController: UIViewController, NoResultsViewHost {
     private func showBlogDetails(for blog: Blog) {
         hideNoSites()
 
+        let dashboardViewController = DashboardViewController()
+        dashboardViewController.blog = blog
+
+        add(dashboardViewController)
+
+        dashboardViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.pinSubviewToAllEdges(dashboardViewController.view)
+
+        return
+
         let blogDetailsViewController = self.blogDetailsViewController(for: blog)
 
         addMeButtonToNavigationBar(email: blog.account?.email, meScenePresenter: meScenePresenter)
