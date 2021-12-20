@@ -101,8 +101,7 @@ import UIKit
 
         let post = postAtIndexPath(indexPath)
 
-        guard let interactivePostView = cell as? InteractivePostView,
-            let configurablePostView = cell as? ConfigurablePostView else {
+        guard let configurablePostView = cell as? ConfigurablePostView else {
                 fatalError("Cell does not implement the required protocols")
         }
 
@@ -115,6 +114,14 @@ import UIKit
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
