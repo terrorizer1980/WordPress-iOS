@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-class DashboardViewController: UITableViewController, WPTableViewHandlerDelegate {
-    var blog: Blog?
+@objc class DashboardViewController: UITableViewController, WPTableViewHandlerDelegate {
+    @objc var blog: Blog?
 
     @objc lazy var tableViewHandler: WPTableViewHandler = {
         let tableViewHandler = WPTableViewHandler(tableView: self.tableView)
@@ -19,6 +19,7 @@ class DashboardViewController: UITableViewController, WPTableViewHandlerDelegate
     }()
 
     override func viewDidLoad() {
+        tableView = IntrinsicTableView()
         view.backgroundColor = .systemBackground
         filterSettings.setCurrentFilterIndex(0)
         configureTableView()
