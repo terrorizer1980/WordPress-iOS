@@ -32,7 +32,14 @@ import UIKit
         if sectionInfo.numberOfObjects > 4 {
             createFetchedResultsController()
             refresh()
+        } else {
+            fetchedResultsController?.delegate = self
         }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController?.delegate = nil
     }
 
     func createFetchedResultsController() {
