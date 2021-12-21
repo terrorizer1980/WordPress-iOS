@@ -23,6 +23,7 @@ import UIKit
         view.backgroundColor = .systemBackground
         filterSettings.setCurrentFilterIndex(0)
         configureTableView()
+        tableViewHandler.refreshTableView()
     }
 
     func configureTableView() {
@@ -33,14 +34,6 @@ import UIKit
         tableView.estimatedRowHeight = CGFloat(300.0)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        do {
-            try tableViewHandler.resultsController.performFetch()
-        } catch {
-            DDLogError("Error fetching posts after updating the fetch request predicate: \(error)")
-        }
     }
 
     func predicateForFetchRequest() -> NSPredicate {
