@@ -4,6 +4,8 @@ import UIKit
 @objc class DashboardViewController: UITableViewController {
     @objc var blog: Blog?
 
+    @objc var drafts: Bool = true
+
     var fetchedResultsController: NSFetchedResultsController<Post>!
 
     lazy var filterSettings: PostListFilterSettings = {
@@ -19,32 +21,28 @@ import UIKit
         refresh()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let sectionInfo = fetchedResultsController.sections![0]
-
-        // When the user goes to posts screen and then back, the FRC will not respect the fetchLimit
-        // thus displaying ALL the posts that were shown on the posts list
-        // Here we check for the amount of results and in case there are more than 4 we reset the FRC
-        //
-        // Ps.: the number is 4 - and not 3 - to take into the account the creation of a new post
-        // when showing the drafts
-        if sectionInfo.numberOfObjects > 4 {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if postlist {
             createFetchedResultsController()
             refresh()
-        } else {
-            fetchedResultsController?.delegate = self
+            postlist = false
         }
     }
 
+    var postlist = false
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        fetchedResultsController?.delegate = nil
+        if navigationController?.topViewController is AbstractPostListViewController {
+            fetchedResultsController?.delegate = nil
+            fetchedResultsController = nil
+            postlist = true
+        }
     }
 
     func createFetchedResultsController() {
         // 0 = published, 1 = draft, 2 = scheduled
-        filterSettings.setCurrentFilterIndex(1)
+        filterSettings.setCurrentFilterIndex(drafts ? 1 : 0)
 
         fetchedResultsController?.delegate = nil
         fetchedResultsController = nil

@@ -230,6 +230,8 @@ NSString * const WPCalypsoDashboardPath = @"https://wordpress.com/stats/";
 
 @property (nonatomic, strong) UITableViewCell *dashboardCell;
 
+@property (nonatomic, strong) UITableViewCell *dashboardCellDois;
+
 @end
 
 @implementation BlogDetailsViewController
@@ -760,6 +762,7 @@ NSString * const WPCalypsoDashboardPath = @"https://wordpress.com/stats/";
         [marr addObject:[self quickStartSectionViewModel]];
     }
     [marr addObject:[self cardsSectionViewModel]];
+    [marr addObject:[self cardsSectionViewModelDois]];
     if (([self.blog supports:BlogFeatureActivity] && ![self.blog isWPForTeams]) || [self.blog supports:BlogFeatureJetpackSettings]) {
         [marr addObject:[self jetpackSectionViewModel]];
     } else {
@@ -820,6 +823,23 @@ NSString * const WPCalypsoDashboardPath = @"https://wordpress.com/stats/";
 }
 
 - (BlogDetailsSection *)cardsSectionViewModel
+{
+    __weak __typeof(self) weakSelf = self;
+    NSMutableArray *rows = [NSMutableArray array];
+
+    [rows addObject:[[BlogDetailsRow alloc] initWithTitle:NSLocalizedString(@"Backup", @"Noun. Links to a blog's Jetpack Backups screen.")
+                                  accessibilityIdentifier:@"Backup Row"
+                                                    image:[UIImage gridiconOfType:GridiconTypeCloudUpload]
+                                                 callback:^{
+                                                     [weakSelf showBackup];
+                                                 }]];
+
+    NSString *title = @"";
+
+    return [[BlogDetailsSection alloc] initWithTitle:title andRows:rows category:BlogDetailsSectionCategoryJetpack];
+}
+
+- (BlogDetailsSection *)cardsSectionViewModelDois
 {
     __weak __typeof(self) weakSelf = self;
     NSMutableArray *rows = [NSMutableArray array];
@@ -1450,6 +1470,24 @@ NSString * const WPCalypsoDashboardPath = @"https://wordpress.com/stats/";
         }
 
         return self.dashboardCell;
+    }
+
+    if (indexPath.row == 0 && indexPath.section == 1) {
+        if (self.dashboardCellDois == nil) {
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+            DashboardViewController *vc = [[DashboardViewController alloc] init];
+            vc.blog = self.blog;
+            vc.drafts = false;
+            [self addChildViewController:vc];
+            [cell.contentView addSubview:vc.view];
+            vc.view.translatesAutoresizingMaskIntoConstraints = false;
+            [vc.view pinSubviewToAllEdges:cell.contentView];
+            [vc didMoveToParentViewController:self];
+            [vc.view layoutIfNeeded];
+            self.dashboardCellDois = cell;
+        }
+
+        return self.dashboardCellDois;
     }
 
     BlogDetailsSection *section = [self.tableSections objectAtIndex:indexPath.section];
