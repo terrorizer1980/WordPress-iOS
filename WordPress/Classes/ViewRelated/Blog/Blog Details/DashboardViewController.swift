@@ -1,18 +1,10 @@
 import Foundation
 import UIKit
 
-@objc class DashboardViewController: UITableViewController, WPTableViewHandlerDelegate {
+@objc class DashboardViewController: UITableViewController {
     @objc var blog: Blog?
 
-    @objc lazy var tableViewHandler: WPTableViewHandler = {
-        let tableViewHandler = WPTableViewHandler(tableView: self.tableView)
-
-        tableViewHandler.cacheRowHeights = false
-        tableViewHandler.delegate = self
-        tableViewHandler.updateRowAnimation = .none
-
-        return tableViewHandler
-    }()
+    var fetchedResultsController: NSFetchedResultsController<Post>!
 
     lazy var filterSettings: PostListFilterSettings = {
         return PostListFilterSettings(blog: self.blog!, postType: .post)
@@ -21,9 +13,47 @@ import UIKit
     override func viewDidLoad() {
         tableView = IntrinsicTableView()
         view.backgroundColor = .systemBackground
-        filterSettings.setCurrentFilterIndex(0)
+
         configureTableView()
-        tableViewHandler.refreshTableView()
+        createFetchedResultsController()
+        refresh()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let sectionInfo = fetchedResultsController.sections![0]
+
+        // When the user goes to posts screen and then back, the FRC will not respect the fetchLimit
+        // thus displaying ALL the posts that were shown on the posts list
+        // Here we check for the amount of results and in case there are more than 4 we reset the FRC
+        //
+        // Ps.: the number is 4 - and not 3 - to take into the account the creation of a new post
+        // when showing the drafts
+        if sectionInfo.numberOfObjects > 4 {
+            createFetchedResultsController()
+            refresh()
+        }
+    }
+
+    func createFetchedResultsController() {
+        // 0 = published, 1 = draft, 2 = scheduled
+        filterSettings.setCurrentFilterIndex(1)
+
+        fetchedResultsController?.delegate = nil
+        fetchedResultsController = nil
+
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext(), sectionNameKeyPath: nil, cacheName: nil)
+
+        fetchedResultsController.delegate = self
+    }
+
+    func refresh() {
+        do {
+            try fetchedResultsController.performFetch()
+            tableView.reloadData()
+        } catch {
+            print("Fetch failed")
+        }
     }
 
     func configureTableView() {
@@ -45,6 +75,9 @@ import UIKit
            predicates.append(basePredicate)
        }
 
+        let filterPredicate = filterSettings.currentPostListFilter().predicateForFetchRequest
+        predicates.append(filterPredicate)
+
        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
        return predicate
     }
@@ -53,11 +86,11 @@ import UIKit
         ContextManager.shared.mainContext
     }
 
-    func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Post.self))
+    func fetchRequest() -> NSFetchRequest<Post> {
+        let fetchRequest = NSFetchRequest<Post>(entityName: String(describing: Post.self))
         fetchRequest.predicate = predicateForFetchRequest()
         fetchRequest.sortDescriptors = sortDescriptorsForFetchRequest()
-        fetchRequest.fetchBatchSize = 10
+        fetchRequest.fetchBatchSize = 3
         fetchRequest.fetchLimit = 3
         return fetchRequest
     }
@@ -67,7 +100,6 @@ import UIKit
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = postAtIndexPath(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCompactCellIdentifier", for: indexPath)
 
         configureCell(cell, at: indexPath)
@@ -76,17 +108,7 @@ import UIKit
     }
 
     fileprivate func postAtIndexPath(_ indexPath: IndexPath) -> Post {
-        guard let post = tableViewHandler.resultsController.object(at: indexPath) as? Post else {
-            // Retrieving anything other than a post object means we have an App with an invalid
-            // state.  Ignoring this error would be counter productive as we have no idea how this
-            // can affect the App.  This controlled interruption is intentional.
-            //
-            // - Diego Rey Mendez, May 18 2016
-            //
-            fatalError("Expected a post object.")
-        }
-
-        return post
+        fetchedResultsController.object(at: indexPath)
     }
 
     func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
@@ -122,4 +144,55 @@ import UIKit
 
         PostListEditorPresenter.handle(post: post, in: self)
     }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections?.count ?? 0
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.numberOfObjects
+    }
+}
+
+extension DashboardViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .update:
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) {
+                configureCell(cell, at: indexPath)
+            }
+            break;
+        case .move:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break;
+        @unknown default:
+            break;
+        }
+    }
+
 }
