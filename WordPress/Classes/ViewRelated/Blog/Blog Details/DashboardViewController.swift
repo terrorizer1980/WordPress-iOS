@@ -21,25 +21,6 @@ import UIKit
         refresh()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if postlist {
-            createFetchedResultsController()
-            refresh()
-            postlist = false
-        }
-    }
-
-    var postlist = false
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if navigationController?.topViewController is AbstractPostListViewController {
-            fetchedResultsController?.delegate = nil
-            fetchedResultsController = nil
-            postlist = true
-        }
-    }
-
     func createFetchedResultsController() {
         // 0 = published, 1 = draft, 2 = scheduled
         filterSettings.setCurrentFilterIndex(drafts ? 1 : 0)
@@ -167,6 +148,11 @@ extension DashboardViewController: NSFetchedResultsControllerDelegate {
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+
+        if fetchedResultsController.fetchRequest.fetchLimit > 0 && fetchedResultsController.fetchRequest.fetchLimit < fetchedResultsController.fetchedObjects?.count ?? 0 {
+            try? fetchedResultsController.performFetch()
+            tableView.reloadData()
+        }
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
