@@ -12,12 +12,16 @@ import UIKit
         return PostListFilterSettings(blog: self.blog!, postType: .post)
     }()
 
+    private(set) var ghostableTableView = IntrinsicTableView()
+
     override func viewDidLoad() {
         tableView = IntrinsicTableView()
         view.backgroundColor = .systemBackground
 
+        configureGhostableTableView()
         configureTableView()
         createFetchedResultsController()
+        sync()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -92,6 +96,8 @@ import UIKit
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCompactCellIdentifier", for: indexPath)
 
+        ghostableTableView.isHidden = true
+
         configureCell(cell, at: indexPath)
 
         return cell
@@ -142,6 +148,58 @@ import UIKit
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
+    }
+
+    // Ghostable
+
+    func configureGhostableTableView() {
+        view.addSubview(ghostableTableView)
+
+        ghostableTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            ghostableTableView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            ghostableTableView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            ghostableTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            ghostableTableView.topAnchor.constraint(equalTo: view.topAnchor)
+        ])
+
+        ghostableTableView.backgroundColor = .white
+        ghostableTableView.isScrollEnabled = false
+
+        let postCompactCellNib = UINib(nibName: "PostCompactCell", bundle: Bundle.main)
+        ghostableTableView.register(postCompactCellNib, forCellReuseIdentifier: "PostCompactCellIdentifier")
+
+        let ghostOptions = GhostOptions(displaysSectionHeader: false, reuseIdentifier: "PostCompactCellIdentifier", rowsPerSection: [3])
+        let style = GhostStyle(beatDuration: GhostStyle.Defaults.beatDuration,
+                               beatStartColor: .placeholderElement,
+                               beatEndColor: .placeholderElementFaded)
+        ghostableTableView.removeGhostContent()
+        ghostableTableView.displayGhostContent(options: ghostOptions, style: style)
+
+//        print("$$ what?")
+    }
+
+    func sync() {
+        let filter = filterSettings.currentPostListFilter()
+        let author = filterSettings.shouldShowOnlyMyPosts() ? blog!.userID : nil
+
+        let postService = PostService(managedObjectContext: managedObjectContext())
+
+        let options = PostServiceSyncOptions()
+        options.statuses = filter.statuses.strings
+        options.authorID = author
+        options.number = 4
+        options.purgesLocalSync = true
+
+        postService.syncPosts(
+            ofType: .post,
+            with: options,
+            for: blog!,
+            success: {[weak self] posts in
+
+            }, failure: {[weak self] (error: Error?) -> () in
+
+        })
     }
 }
 
