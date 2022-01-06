@@ -1,3 +1,7 @@
+Unreleased
+-----
+* [*] Better error messages are shown when logging into self-hosted sites. [#17724] 
+
 19.0
 -----
 * [**] Video uploads: video upload is now limited to 5 minutes per video on free plans.
