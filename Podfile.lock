@@ -1,5 +1,4 @@
 PODS:
-  - 1PasswordExtension (1.8.6)
   - Alamofire (4.8.0)
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
@@ -455,8 +454,7 @@ PODS:
   - WordPress-Aztec-iOS (1.19.6)
   - WordPress-Editor-iOS (1.19.6):
     - WordPress-Aztec-iOS (= 1.19.6)
-  - WordPressAuthenticator (1.42.1):
-    - 1PasswordExtension (~> 1.8.6)
+  - WordPressAuthenticator (1.42.2-beta.1):
     - Alamofire (~> 4.8)
     - CocoaLumberjack (~> 3.5)
     - GoogleSignIn (~> 6.0.1)
@@ -570,8 +568,8 @@ DEPENDENCIES:
   - Starscream (= 3.0.6)
   - SVProgressHUD (= 2.2.5)
   - WordPress-Editor-iOS (~> 1.19.6)
-  - WordPressAuthenticator (~> 1.42.1)
-  - WordPressKit (~> 4.45.0)
+  - WordPressAuthenticator (from `https://github.com/wordpress-mobile/WordPressAuthenticator-iOS.git`, commit `6cb4964c8db401933babf34e54d733c1795555b9`)
+  - WordPressKit (from `https://github.com/wordpress-mobile/WordPressKit-iOS.git`, commit `1b1b8dc2640059630324da41efd19762fd02f291`)
   - WordPressMocks (~> 0.0.15)
   - WordPressShared (~> 1.17.0)
   - WordPressUI (~> 1.12.2)
@@ -582,10 +580,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/wordpress-mobile/cocoapods-specs.git:
-    - WordPressAuthenticator
     - WordPressUI
   trunk:
-    - 1PasswordExtension
     - Alamofire
     - AlamofireImage
     - AlamofireNetworkActivityIndicator
@@ -623,7 +619,6 @@ SPEC REPOS:
     - UIDeviceIdentifier
     - WordPress-Aztec-iOS
     - WordPress-Editor-iOS
-    - WordPressKit
     - WordPressMocks
     - WordPressShared
     - WPMediaPicker
@@ -735,6 +730,12 @@ EXTERNAL SOURCES:
     :git: https://github.com/wordpress-mobile/gutenberg-mobile.git
     :submodules: true
     :tag: v1.69.0-alpha1
+  WordPressAuthenticator:
+    :commit: 6cb4964c8db401933babf34e54d733c1795555b9
+    :git: https://github.com/wordpress-mobile/WordPressAuthenticator-iOS.git
+  WordPressKit:
+    :commit: 1b1b8dc2640059630324da41efd19762fd02f291
+    :git: https://github.com/wordpress-mobile/WordPressKit-iOS.git
   Yoga:
     :podspec: https://raw.githubusercontent.com/wordpress-mobile/gutenberg-mobile/v1.69.0-alpha1/third-party-podspecs/Yoga.podspec.json
 
@@ -750,9 +751,14 @@ CHECKOUT OPTIONS:
     :git: https://github.com/wordpress-mobile/gutenberg-mobile.git
     :submodules: true
     :tag: v1.69.0-alpha1
+  WordPressAuthenticator:
+    :commit: 6cb4964c8db401933babf34e54d733c1795555b9
+    :git: https://github.com/wordpress-mobile/WordPressAuthenticator-iOS.git
+  WordPressKit:
+    :commit: 1b1b8dc2640059630324da41efd19762fd02f291
+    :git: https://github.com/wordpress-mobile/WordPressKit-iOS.git
 
 SPEC CHECKSUMS:
-  1PasswordExtension: f97cc80ae58053c331b2b6dc8843ba7103b33794
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
@@ -836,7 +842,7 @@ SPEC CHECKSUMS:
   UIDeviceIdentifier: d0fee204f467dacf8808b7ac14ce43affeb271a5
   WordPress-Aztec-iOS: 129276e7d1391acb08157641a54394668bb0d7f8
   WordPress-Editor-iOS: 7e8b8690858ab67a9544d1c623babfc533eac761
-  WordPressAuthenticator: 111793c08fa8e9d9a72aed5b33a094c91ff4fd82
+  WordPressAuthenticator: 50a356cca8088b850aad6c4864a375539897ab7b
   WordPressKit: 7d4ecdcb62b3826b491dad9fb9b6fb02ac9702b5
   WordPressMocks: 6b52b0764d9939408151367dd9c6e8a910877f4d
   WordPressShared: a4b0308a6345d4dda20c8f7ad9317df4246b4a00
@@ -853,6 +859,6 @@ SPEC CHECKSUMS:
   ZendeskSupportSDK: 3a8e508ab1d9dd22dc038df6c694466414e037ba
   ZIPFoundation: e27423c004a5a1410c15933407747374e7c6cb6e
 
-PODFILE CHECKSUM: b5e6697af49c60f7b470245af957ae7918e45c18
+PODFILE CHECKSUM: 55a267f5f87ac27e54e100853a1955f21608f329
 
 COCOAPODS: 1.11.2
