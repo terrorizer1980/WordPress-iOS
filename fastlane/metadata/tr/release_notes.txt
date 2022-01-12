@@ -1,14 +1,7 @@
-Herkese iyi haberlerimiz var. Çevrimdışıyken resim yüklerken, medya silerken veya "Beğenme" bildirimlerinin ayrıntılarını görüntülerken oluşan uygulama kilitlenme durumlarını düzelttik.
+Yeni bir yıl, yeni bir görünüm! Yazar etiketleri, aksesuar/paylaşım düğmeleri ve satır ile yanıt vurgulama için yorum dizilerini göz alıcı yeni bir tasarımla güncelledik. Ayrıca Blok Düzenleyicide birkaç güncelleme yaptık.
 
-Gönderilerinizi huzurlu bir şekilde yayınlayabilmeniz için blok düzenleyicide bazı büyük değişiklikler yaptık:
-
-- Bir URL'ye bağlı bir Düğme veya Resim blokunun ayarlarını açtığınızda, düzenleyici artık bir URL'yi panonuzdan otomatik olarak doldurmaz. Artık pano URL'sini kullanabilmeniz veya farklı bir URL girebilmeniz için bir "Bağlantı" önerisi göreceksiniz.
-- Bir Galeri bloku oluşturduğunuzda, cihazınızın medya seçenekleri otomatik olarak açılır ve görsel eklemenizi kolaylaştırır.
-- Yeni bir blok mu ekliyorsunuz? Cihazınız İngilizce dışında bir dile ayarlanmışsa, ekleyici menüsündeki sekmeler artık ayarladığınız dille eşleşecektir.
-- Gömülü bloku kullanırken, araç çubuğunda "Düzenle" eylemi görüntülenmez. Artık bunun yerine Blok Ayarlarına giderek URL'yi değiştirebilirsiniz.
-- Gönderi düzenleyicide HTML modundan Görsel moda geçiş yaptığınızda geçiş hakkında size bilgi veren küçük bir uyarı görüntülenir.
-- Medya ve Metin bloklarında yazı tipi boyutunun kendi kendine değiştiğini fark etmiş olabilirsiniz. Buna neden olan hatayı giderdik.
-
-WordPress'te yeni misiniz? Endişe etmeyin. Giriş sürecimiz, sitenizi oluşturmayı ve yönetmeye başlamayı her zamankinden daha kolay hale getiriyor.
-
-Ayrıca, uygulamaya puan verip paylaşabilmeniz için (ipucu, ipucu) yeni bir Hakkında ekranı ekledik, Twitter profilimizi ve blogumuzu ziyaret edebilir, diğer uygulamalarınızı görüntüleyebilir ve daha bir çok şey yapabilirsiniz.
+- Paragraf bloklarını düzenlerken, belirli metinleri istediğiniz renkle vurgulayabilirsiniz.
+- Yepyeni Galeri blokları varsayılan olarak yeni tasarıma geçecektir. Ayrıca eski galerileri sorunsuz bir şekilde yeni biçime otomatik olarak dönüştürebilirsiniz.
+- Düzenleyici artık otomatik olarak kayar, böylece ne yazdığınızı her zaman görebilirsiniz. Artık kaybolan metinlere de, tahmin etmek zorunda kalmaya da son.
+- Artık Okuyucu'da gönderi içeriğinizden sonra görüntülenen bir Yorumlar parçacığı göreceksiniz. Bu, aldığınız yorumlara ilişkin hızlı bir örnek verir ve sohbete daha hızlı katılmanıza yardımcı olur.
+- Standart temalar kullanan sitelerde önceden biçimlendirilmiş bloklar için arka plan renginin görünmesini engelleyen bir hatayı düzelttik.

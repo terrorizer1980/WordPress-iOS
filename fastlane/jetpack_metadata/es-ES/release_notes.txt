@@ -1,14 +1,6 @@
-Buenas noticias: hemos corregido los errores de la aplicación que se producían cuando se subían imágenes sin conexión, se eliminaban medios o se visualizaban los detalles de las notificaciones de "Me gusta".
+¿Has prometido para este año nuevo publicar más contenido en tu sitio? Hemos hecho algunas actualizaciones al Editor de Bloques para ayudarte a hacer justamente eso.
 
-Hemos realizado algunos cambios importantes en el editor de bloques para que puedas seguir publicando con tranquilidad:
-
-- Al abrir los ajustes de un bloque de botón o imagen enlazado a una URL, el editor ya no completará de manera automática la URL en el portapapeles. En cambio, verás una sugerencia de "Enlace a" para que puedas utilizar la URL del portapapeles o introducir una diferente.
-- Al crear un bloque de Galería, las opciones de medios de tu dispositivo se abrirán automáticamente, facilitándote la tarea de añadir las imágenes.
-- ¿Quieres añadir un bloque nuevo? Si tu dispositivo está configurado en un idioma distinto al inglés, las pestañas del menú del insertador coincidirán con el idioma configurado.
-- Cuando utilices el bloque de incrustar, no verás la acción "Editar" en la barra de herramientas. Ahora, puedes modificar la URL en los ajustes del bloque.
-- En el editor de entradas, al cambiar del modo HTML al modo Visual, aparecerá un aviso compacto que te informará del cambio.
-- Es posible que te hayas dado cuenta que el tamaño de la fuente cambia por sí solo en los bloques de Medios y Texto. Hemos eliminado el error que causaba este comportamiento.
-
-¿Eres nuevo en WordPress? No te preocupes. Nuestro proceso de inicio de sesión hace que sea más fácil que nunca crear y empezar a gestionar tu sitio.
-
-También hemos añadido una nueva pantalla "Acerca de" para que puedas valorar y compartir la aplicación (y ayudarnos), visitar nuestro perfil de Twitter y nuestro blog, ver otras de nuestras aplicaciones y mucho más.
+- Cuando estás editando bloques de párrafo, puedes resaltar un texto específico en el color que desees.
+- Los nuevos bloques de galería serán por defecto con el nuevo diseño. También puedes convertir automáticamente cualquier galería antigua al nuevo formato sin problemas.
+- Ahora, el editor hace scroll automáticamente, por lo que siempre puedes ver lo que estás escribiendo. No más texto que desaparece, no más suposiciones.
+- Hemos eliminado un fallo por el que el color de fondo no aparecía en los bloques con formato previo de los sitios que usan temas estándar.

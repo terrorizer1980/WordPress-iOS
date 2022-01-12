@@ -1,14 +1,7 @@
-Kabar baik, kami telah memperbaiki masalah crash aplikasi yang disebabkan pengunggahan gambar saat offline, menghapus media, atau melihat detail pemberitahuan "Suka".
+Ada resolusi tahun baru untuk menulis lebih banyak konten di situs anda? Kami telah memperbarui Editor Blok untuk membantu anda. 
 
-Kami melakukan perubahan besar pada editor blok sehingga Anda bisa tetap tenang dan terus memposkan:
+- Saat Anda mengedit blok Paragraf, Anda dapat menyoroti teks tertentu dengan warna yang Anda suka.
+-  Blok Galeri baru secara default akan menggunakan desain baru. Anda juga dapat mengubah galeri yang terdahulu ke format baru tanpa kendala secara otomatis.
+- Sekarang Editor bergulir otomatis, jadi Anda dapat melihat apa yang Anda ketik. Tidak ada lagi teks yang tidak tampak, tidak ada lagi tebak-tebakan.
+- Kami menghilangkan gangguan di mana warna latar belakang tidak tampil pada blok yang sudah diformat sebelumnya pada situs yang menggunakan tema standar.
 
-- Ketika Anda membuka pengaturan untuk blok Tombol atau Gambar yang ditautkan ke sebuah URL, editor tidak akan lagi mengisi URL secara otomatis dari papan klip Anda. Sekarang Anda akan melihat saran "Tautkan Ke" sehingga Anda bisa menggunakan URL papan klip atau memasukkan URL yang berbeda.
-- Membuat blok Galeri akan secara otomatis membuka pilihan media perangkat sehingga memudahkan Anda untuk menambahkan gambar.
-- Menambahkan blok baru? Jika bahasa perangkat diatur ke bahasa selain Inggris, sekarang tab pada menu penyisip akan mencocokkan dengan bahasa yang Anda tetapkan.
-- Ketika menggunakan blok Sematan, Anda tidak akan melihat tindakan "Edit" pada bilah peralatan. Sekarang Anda bisa mengubah URL dengan membuka Pengaturan Blok.
-- Pada editor pos, mengalihkan mode HTML ke mode Visual akan memunculkan pemberitahuan singkat tentang peralihan tersebut.
-- Anda mungkin akan melihat ukuran font berubah dengan sendirinya pada blok Media dan Teks. Kami telah menghapus bug penyebabnya.
-
-Baru menggunakan WordPress? Jangan khawatir. Proses login kami mempermudah Anda membuat dan mulai mengelola situs.
-
-Kami juga menambahkan layar Tentang baru sehingga Anda dapat menilai dan membagikan aplikasi (mohon bantuannya), mengunjungi profil dan blog Twitter kami, melihat aplikasi lain dari kami, dan masih banyak lainnya.

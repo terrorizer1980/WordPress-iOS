@@ -1,14 +1,7 @@
-Gute Neuigkeiten: Wir haben App-Abstürze, die durch den Offline-Upload von Bildern, das Löschen von Medien oder das Anzeigen von Details für „Gefällt mir“-Benachrichtigungen verursacht wurden, behoben.
+Neues Jahr, neuer Look! Wir haben die Kommentar-Threads aktualisiert. Sie haben jetzt ein neues Design für Autoren-Label, Zubehör- und Teilen-Buttons und das Markieren von Zeilen und Antworten. Außerdem haben wir den Block-Editor aktualisiert.
 
-Wir haben umfassende Änderungen am Block-Editor vorgenommen, damit du unbesorgt Beiträge veröffentlichen kannst auf:
-
-- Wenn du die Einstellungen für einen mit einer URL verknüpften Button oder Bildblock öffnest, wird im Editor nicht mehr automatisch eine URL aus deiner Zwischenablage eingefügt. Du erhältst jetzt einen „Link zu“-Vorschlag, d. h., du kannst entweder die URL aus der Zwischenablage verwenden oder eine andere eingeben.
-- Wenn du einen Galerieblock erstellst, werden die Medienoptionen deines Geräts automatisch geöffnet. So kannst du deine Bilder einfacher hinzufügen.
-- Du möchtest einen neuen Block hinzufügen? Wenn auf deinem Gerät eine andere Sprache als Englisch eingestellt ist, entsprechen die Tabs im Inserter-Menü ab sofort deiner Gerätesprache.
-- Bei Verwendung des Embed-Blocks wird dir in der Toolbar nicht die Aktion „Bearbeiten“ angezeigt. Du kannst die URL ab sofort in den Blockeinstellungen ändern.
-- Wenn du im Beitragseditor vom HTML-Modus zum visuellen Modus wechselst, wird dir ein kurzer Hinweis zum Wechsel angezeigt.
-- Vielleicht hast du schon bemerkt, dass sich die Schriftgröße in „Medien und Text“-Blöcken automatisch ändert. Wir haben den Fehler, der dies verursacht hat, beseitigt.
-
-Bist du neu bei WordPress? Kein Grund zur Sorge. Mit unserem Anmeldeprozess ist es einfacher denn je, eine eigene Website zu erstellen und zu verwalten.
-
-Wir haben zudem eine neue Seite „Über“ hinzugefügt: Hier kannst du die App bewerten und teilen (das solltest du unbedingt tun), unser Profil und Blog auf Twitter besuchen, unsere anderen Apps ansehen und vieles mehr.
+- Wenn du Absatzblöcke bearbeitest, kannst du Text in einer beliebigen Farbe markieren. 
+- Brandneue Galerieblöcke haben standardmäßig das neue Design. Und du kannst alte Galerien ganz einfach automatisch in das neue Format konvertieren.
+- Der Editor scrollt automatisch, damit du immer siehst, was du tippst. Kein verschwindender Text und kein Raten mehr.
+- Dir wird jetzt nach dem Inhalt deines Beitrags im Reader ein Kommentarausschnitt angezeigt. So siehst du einen Teil der Kommentare, die du erhältst, und kannst schneller ins Gespräch einsteigen.
+- Wir haben einen Bug behoben, durch den die Hintergrundfarbe für vorformatierte Blöcke auf Websites mit Standard-Themes nicht angezeigt wurde.
