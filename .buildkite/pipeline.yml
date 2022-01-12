@@ -37,7 +37,7 @@ steps:
     command: "gplint /workdir/WordPress/Resources/AppStoreStrings.po"
     plugins:
       - docker#v3.8.0:
-          image: "public.ecr.aws/automattic/glotpress-validator:c432ba2f7008429179d2f0406d4050d025daac0c"
+          image: "public.ecr.aws/automattic/glotpress-validator:40566a2148eb11433af19c4238b6d57f4338104a"
     agents:
       queue: "default"
 
